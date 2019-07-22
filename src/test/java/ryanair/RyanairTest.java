@@ -2,8 +2,9 @@ package ryanair;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import base.BaseTestClass;
 
-public class RyanairTest {
+public class RyanairTest extends BaseTestClass {
 
     @Test
     void sum(){
