@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 public class BrowserActions {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    public WebDriver driver;
+    public WebDriverWait wait;
     private Logger logger = LoggerFactory.getLogger(BrowserActions.class);
 
     public BrowserActions(WebDriver driver){
@@ -20,12 +20,32 @@ public class BrowserActions {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void click(String selector) {
-        WebElement clickableElement = null;
+    public void clickButton(String selector) {
         try {
-            clickableElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(selector)));
+            WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
+            clickableElement.click();
         } catch (NoSuchElementException e) {
             logger.error(e.toString());
         }
+    }
+
+    public void fillTextField(String selector, String textToSend) {
+        try {
+            WebElement textField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
+            textField.sendKeys(textToSend);
+        } catch (NoSuchElementException e) {
+            logger.error(e.toString());
+        }
+    }
+
+    public boolean checkElementHasText(String selector, String textToCheck){
+        boolean result = false;
+        try{
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
+            result = element.getText().contains(textToCheck);
+        }catch(NoSuchElementException e) {
+            logger.error(e.toString());
+        }
+        return result;
     }
 }

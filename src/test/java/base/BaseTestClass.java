@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 public class BaseTestClass {
 
-    public WebDriver driver;
+    public WebDriver driver = new ChromeDriver();
 
     @BeforeSuite
     public void before(){
@@ -21,7 +21,6 @@ public class BaseTestClass {
     @BeforeMethod
     public void launchBrowser(Method method){
         System.out.println("-----------------    " + method.getName() + "    -----------------");
-        driver = new ChromeDriver();
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(webDriver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"));

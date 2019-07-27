@@ -2,7 +2,6 @@ package pages;
 
 import commons.BrowserActions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static locators.HomePageLocators.*;
 
@@ -15,6 +14,24 @@ public class HomePage {
     }
 
     public void clickSearchButton(){
-        browserActions.click(SEARCH_BUTTON);
+        browserActions.clickButton(SEARCH_BUTTON);
     }
+
+    public void fillLocationTestField(String location){
+        browserActions.fillTextField(LOCATION_INPUT, location);
+    }
+
+    /**
+     * two methods below select date using the date picker/calendar element
+     * @param date formatted date as string
+     */
+    public void selectPickUpDate(String date){
+    }
+
+    public void selectReturnDate(String date){
+    }
+
+    /**
+     * two methods below select dats by filling out the date forms
+     */
 }

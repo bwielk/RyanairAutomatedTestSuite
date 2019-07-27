@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c8b74ba-a555-42f3-8113-ed988aba752d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/locators/SearchResultsLocators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/commons/BrowserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commons/BrowserActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/locators/HomePageLocators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/locators/HomePageLocators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/base/BaseTestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/base/BaseTestClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commons/BrowserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commons/BrowserActions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/base/BaseTestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/base/BaseTestClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ryanair/RyanairTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ryanair/RyanairTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,12 +33,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="307">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#249#250#0" expanded="true" />
-                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#342#343#0" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            <state relative-caret-position="442">
+              <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#401#402#0" expanded="true" />
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/commons/BrowserActions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="341">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,17 +79,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pages/HomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="290">
+              <caret line="34" column="66" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#293#294#0" expanded="true" />
                 <element signature="e#357#358#0" expanded="true" />
                 <element signature="e#584#585#0" expanded="true" />
                 <element signature="e#622#623#0" expanded="true" />
+                <element signature="e#509#510#0" expanded="true" />
+                <element signature="e#538#539#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pages/SearchResultsPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#164#165#0" expanded="true" />
+                <element signature="e#200#201#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/locators/SearchResultsLocators.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -122,10 +148,12 @@
         <option value="$PROJECT_DIR$/testng.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/locators/HomePageLocators.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pages/HomePage.java" />
         <option value="$PROJECT_DIR$/src/test/java/base/BaseTestClass.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/commons/BrowserActions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pages/SearchResultsPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/locators/SearchResultsLocators.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pages/HomePage.java" />
       </list>
     </option>
   </component>
@@ -235,6 +263,11 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ryanair" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ryanair_automated_tests" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ryanair_automated_tests" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -244,7 +277,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564083985804" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564212364362" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -377,21 +410,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RyanairTest - 2019.07.22 at 23h 17m 16s.xml">
-      <configuration name="RyanairTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="RyanairTest - 2019.07.22 at 23h 18m 11s.xml">
-      <configuration name="RyanairTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="RyanairTest - 2019.07.23 at 07h 46m 52s.xml">
-      <configuration name="RyanairTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="RyanairTest - 2019.07.24 at 20h 31m 20s.xml">
-      <configuration name="RyanairTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="RyanairTest_clickButton - 2019.07.25 at 21h 17m 57s.xml">
-      <configuration name="RyanairTest.clickButton" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.25 at 21h 19m 30s.xml">
       <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
     </history-entry>
@@ -407,12 +425,27 @@
     <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.25 at 21h 46m 32s.xml">
       <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.27 at 08h 37m 26s.xml">
+      <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.27 at 08h 40m 35s.xml">
+      <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.27 at 08h 44m 01s.xml">
+      <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.27 at 08h 49m 08s.xml">
+      <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="C__Users_bwiel_IdeaProjects_ryanair_automated_tests_testng_xml - 2019.07.27 at 08h 50m 12s.xml">
+      <configuration name="C:/Users/bwiel/IdeaProjects/ryanair_automated_tests/testng.xml" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -421,7 +454,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -445,7 +478,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>35</line>
+          <line>34</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -469,68 +502,81 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>25</line>
+          <line>24</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>27</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>28</line>
+          <line>27</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>33</line>
+          <line>32</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>34</line>
+          <line>33</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>36</line>
+          <line>35</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>37</line>
+          <line>36</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>38</line>
+          <line>37</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>40</line>
+          <line>39</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java</url>
-          <line>39</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="35" column="71" selection-start-line="35" selection-start-column="71" selection-end-line="35" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testng.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -538,10 +584,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="35" column="71" selection-start-line="35" selection-start-column="71" selection-end-line="35" selection-end-column="71" />
+        <state relative-caret-position="442">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commons/BrowserActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -552,49 +613,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/base/BaseTestClass.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/locators/SearchResultsLocators.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        <state relative-caret-position="102">
+          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pages/SearchResultsPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#164#165#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ryanair/RyanairTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="307">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pages/HomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="290">
+          <caret line="34" column="66" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
             <element signature="e#357#358#0" expanded="true" />
             <element signature="e#584#585#0" expanded="true" />
             <element signature="e#622#623#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commons/BrowserActions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
           </folding>
         </state>
       </provider>
