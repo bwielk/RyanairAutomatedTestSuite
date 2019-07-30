@@ -1,9 +1,7 @@
 package commons;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -17,10 +15,10 @@ public class BrowserActions {
 
     public BrowserActions(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 10);
+        this.wait = new WebDriverWait(driver, 15);
     }
 
-    public void clickButton(String selector) {
+    public void click(String selector) {
         try {
             WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
             clickableElement.click();
@@ -47,5 +45,22 @@ public class BrowserActions {
             logger.error(e.toString());
         }
         return result;
+    }
+
+    public boolean checkElementIsDisplayed(String selector){
+        boolean result = false;
+        try{
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
+            if(element != null){
+                result = true;
+            }
+        }catch(NoSuchElementException e){
+            logger.error(e.toString());
+        }
+        return result;
+    }
+
+    public void pressKey(Keys key){
+        new Actions(driver).sendKeys(key).build().perform();
     }
 }
