@@ -5,10 +5,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import base.BaseTestClass;
 import pages.HomePage;
+import pages.SearchResultsPage;
 
 
 public class RyanairTest extends BaseTestClass {
     private HomePage homePage;
+    private SearchResultsPage searchResultsPage;
 
     @DataProvider(name = "locations-for-car-search")
     Object[][] carSearchLocations(){
@@ -24,6 +26,8 @@ public class RyanairTest extends BaseTestClass {
         homePage.selectPickUpDate(currentDate);
         homePage.selectReturnDate(futureDate);
         homePage.clickSearchButton();
+        searchResultsPage = new SearchResultsPage(driver);
+        searchResultsPage.editSearchCriteria("Berlin");
     }
 }
 

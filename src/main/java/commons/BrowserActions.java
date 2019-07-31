@@ -37,6 +37,16 @@ public class BrowserActions {
         }
     }
 
+    public void clearAndFillTextField(String selector, String textToSend){
+        try {
+            WebElement textField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
+            textField.clear();
+            textField.sendKeys(textToSend);
+        } catch (NoSuchElementException e) {
+            logger.error(e.toString());
+        }
+    }
+
     public boolean checkElementHasText(String selector, String textToCheck){
         boolean result = false;
         try{
@@ -67,5 +77,9 @@ public class BrowserActions {
 
     public List<WebElement> getElementsByCssSelector(String elementLocator){
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(elementLocator)));
+    }
+
+    public WebElement getElementByCssSelector(String elementLocator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementLocator)));
     }
 }

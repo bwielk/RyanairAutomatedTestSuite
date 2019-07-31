@@ -1,19 +1,12 @@
 package pages;
 
 import commons.BrowserActions;
-import constants.WaitingPageOfferedValues;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import waits.*;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static locators.HomePageLocators.*;
 import static locators.SearchResultsLocators.PROGRESS_BAR;
-import static locators.WaitingPage.HEADER;
-import static locators.WaitingPage.OFFERED_VALUES;
 
 public class HomePage extends BrowserActions{
 
