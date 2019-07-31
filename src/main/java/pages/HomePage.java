@@ -1,30 +1,38 @@
 package pages;
 
 import commons.BrowserActions;
+import constants.WaitingPageOfferedValues;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import waits.*;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static locators.HomePageLocators.*;
+import static locators.SearchResultsLocators.PROGRESS_BAR;
+import static locators.WaitingPage.HEADER;
+import static locators.WaitingPage.OFFERED_VALUES;
 
-public class HomePage {
+public class HomePage extends BrowserActions{
 
-    private BrowserActions browserActions;
     private Waits waits;
 
     public HomePage(WebDriver driver){
-        this.browserActions = new BrowserActions(driver);
+        super(driver);
         this.waits = new Waits(driver);
     }
 
     public void clickSearchButton(){
-        browserActions.click(SEARCH_BUTTON);
+        click(SEARCH_BUTTON);
+        waits.waitUntilElementIsVisible(PROGRESS_BAR);
     }
 
     public void fillLocationTestField(String location){
-        browserActions.fillTextField(LOCATION_INPUT, location);
+        fillTextField(LOCATION_INPUT, location);
         waits.waitUntilElementIsVisible(LOCATION_OPTIONS);
-        browserActions.click(FIRST_AIRPORT_RESULT);
+        click(FIRST_AIRPORT_RESULT);
     }
 
     /**
@@ -32,16 +40,16 @@ public class HomePage {
      * @param date formatted date as string
      */
     public void selectPickUpDate(String date){
-        browserActions.click(PICKUP_DATE_INPUT);
-        browserActions.checkElementIsDisplayed(PICK_UP_TIME);
-        browserActions.click(String.format(PICKUP_DATE_TO_SELECT, date));
-        browserActions.pressKey(Keys.ESCAPE);
+        click(PICKUP_DATE_INPUT);
+        checkElementIsDisplayed(PICK_UP_TIME);
+        click(String.format(PICKUP_DATE_TO_SELECT, date));
+        pressKey(Keys.ESCAPE);
     }
 
     public void selectReturnDate(String date){
-        browserActions.click(RETURN_DATE_INPUT);
-        browserActions.checkElementIsDisplayed(RETURN_TIME);
-        browserActions.click(String.format(RETURN_DATE_TO_SELECT, date));
-        browserActions.pressKey(Keys.ESCAPE);
+        click(RETURN_DATE_INPUT);
+        checkElementIsDisplayed(RETURN_TIME);
+        click(String.format(RETURN_DATE_TO_SELECT, date));
+        pressKey(Keys.ESCAPE);
     }
 }

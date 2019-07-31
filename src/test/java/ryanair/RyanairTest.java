@@ -8,7 +8,7 @@ import pages.HomePage;
 
 
 public class RyanairTest extends BaseTestClass {
-    private HomePage homePage = new HomePage(driver);
+    private HomePage homePage;
 
     @DataProvider(name = "locations-for-car-search")
     Object[][] carSearchLocations(){
@@ -17,6 +17,7 @@ public class RyanairTest extends BaseTestClass {
 
     @Test(dataProvider = "locations-for-car-search")
     public void searchForCarsInSpecificLocation(String location){
+        homePage = new HomePage(driver);
         String currentDate = TimeMachine.getFutureDateFromToday(1, "yyyy,M,d");
         String futureDate = TimeMachine.getFutureDateFromToday(3, "yyyy,M,d");
         homePage.fillLocationTestField(location);

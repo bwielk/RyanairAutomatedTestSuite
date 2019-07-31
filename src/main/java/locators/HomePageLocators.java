@@ -10,8 +10,8 @@ public class HomePageLocators {
     public static final String  RETURN_DATE_INPUT = "[id='returnDate']";
     public static final String  PICK_UP_TIME = "[id='ct-pickup-timers']";
     public static final String  RETURN_TIME = "[id='ct-return-timers']";
-    public static final String  PICKUP_DATE_TO_SELECT = "[class='ct-calendar__month-wrap']:first-child [data-date='%s']";
-    public static final String  RETURN_DATE_TO_SELECT = "[class='ct-calendar__month-wrap']:nth-child(2) [data-date='%s']";
+    public static final String  PICKUP_DATE_TO_SELECT = "[data-comp-id='ct-calendar-date-true'][data-date='%s']";
+    public static final String  RETURN_DATE_TO_SELECT = "[data-comp-id='ct-calendar-date-true'][data-date='%s']";
     public static final String  LOCATION_OPTIONS = "[id='div-options-id-0']";
     public static final String  AIRPORT_LOCATION_OPTIONS = "[data-auto-id='listAirports'] ul";
     public static final String  FIRST_AIRPORT_RESULT = AIRPORT_LOCATION_OPTIONS + " [id='item-0-0']";

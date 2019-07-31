@@ -3,11 +3,9 @@ package pages;
 import commons.BrowserActions;
 import org.openqa.selenium.WebDriver;
 
-public class SearchResultsPage {
-
-    private BrowserActions browserActions;
+public class SearchResultsPage extends BrowserActions {
 
     public SearchResultsPage(WebDriver driver){
-        this.browserActions = new BrowserActions(driver);
+        super(driver);
     }
 }

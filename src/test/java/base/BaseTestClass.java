@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 public class BaseTestClass {
 
-    public WebDriver driver = new ChromeDriver();
+    public WebDriver driver;
 
     @BeforeSuite
     public void before(){
@@ -20,6 +20,7 @@ public class BaseTestClass {
 
     @BeforeMethod
     public void launchBrowser(Method method){
+        driver = new ChromeDriver();
         System.out.println("-----------------    " + method.getName() + "    -----------------");
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, 60);
@@ -36,6 +37,6 @@ public class BaseTestClass {
         }else{
             System.out.println(String.format("\n\n\nTest '%s' has FAILED", method.getName()));
         }
-        driver.close();
+        driver.quit();
     }
 }
