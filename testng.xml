@@ -3,7 +3,7 @@
 <suite name="Ryanair Test Suite">
     <test name="Ryanair tests">
         <classes>
-            <class name="ryanair.RyanairTest"/>
+            <class name="ryanair.RyanairCarSearchTest"/>
         </classes>
     </test>
 </suite>

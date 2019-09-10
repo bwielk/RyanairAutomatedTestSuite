@@ -8,7 +8,7 @@ import pages.HomePage;
 import pages.SearchResultsPage;
 
 
-public class RyanairTest extends BaseTestClass {
+public class RyanairCarSearchTest extends BaseTestClass {
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
 
