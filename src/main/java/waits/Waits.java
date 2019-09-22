@@ -14,7 +14,7 @@ public class Waits {
 
     public Waits(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, 13);
+        this.wait = new WebDriverWait(this.driver, 60);
     }
 
     public void waitUntilElementIsVisible(String cssSelector){

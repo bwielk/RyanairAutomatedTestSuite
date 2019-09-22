@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [ryanair.RyanairTest]">
+  <test thread-count="5" verbose="0" name="Command line test(failed)">
+    <classes>
+      <class name="ryanair.RyanairTest">
+        <methods>
+          <include name="before"/>
+          <include name="searchForCarsInSpecificLocation" invocation-numbers="0"/>
+          <include name="closeBrowser"/>
+          <include name="launchBrowser"/>
+        </methods>
+      </class> <!-- ryanair.RyanairTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [ryanair.RyanairTest] -->

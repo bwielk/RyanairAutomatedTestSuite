@@ -16,7 +16,7 @@ public class BrowserActions {
 
     public BrowserActions(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 15);
+        this.wait = new WebDriverWait(driver, 60);
     }
 
     public void click(String selector) {

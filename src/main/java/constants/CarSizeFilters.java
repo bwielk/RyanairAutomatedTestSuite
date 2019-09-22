@@ -4,7 +4,7 @@ public enum CarSizeFilters {
 
     COMPACT("compact"),
     STANDARD("standard"),
-    CARGO("cargo"),
+    CARGO("cargovan"),
     CONVERTIBLE("convertible");
 
     private String carSize;

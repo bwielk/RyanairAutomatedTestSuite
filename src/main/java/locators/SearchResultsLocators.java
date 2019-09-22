@@ -29,8 +29,8 @@ public class SearchResultsLocators {
     public static final String NEW_LOCATION_RESULTS = "[id='div-options-id-0']";
 
     //FILTERS
-    public static final String AVAILABLE_CARS = "[class='availabilitySummaryDisplayCount']";
-    public static final String FILTER_CHECKBOX_OPTION = "[id='input-size-%s']";
+    public static final String AVAILABLE_CARS = "[class='ct-availability-wrapper'] strong[class='availabilitySummaryTotal']";
+    public static final String FILTER_SIZE_OPTION = "label[for='size-%s']";
     public static final String FILTER_FUEL_OPTION = "[id='input-fuelPolicy-%s']";
     public static final String FILTER_MILEAGE_OPTION = "[id='input-mileage-%s']";
     public static final String FILTER_RATING_OPTION = "[id='input-hireCompanyRating-%s']";

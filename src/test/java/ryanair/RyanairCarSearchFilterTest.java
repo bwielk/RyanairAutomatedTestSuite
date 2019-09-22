@@ -8,31 +8,26 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SearchResultsPage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class RyanairCarSearchFilterTest extends BaseTestClass {
 
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
 
-    @DataProvider(name = "locations-for-car-search")
-    Object[][] carSearchLocations(){
-        return new Object[][] {{"Barcelona"}};
-    }
-
-    @DataProvider(name = "filters")
+    @DataProvider(name = "filters-car-size")
     Object[][] filters() {
-        return new Object[][] {
-                {CarSizeFilters.CARGO, CarSizeFilters.COMPACT},
-                {FuelPolicyFilter.FULL_TO_FULL, FuelPolicyFilter.SAME_TO_SAME},
-                {MileageFilters.LIMITED},
-                {RatingFilter.AVERAGE, RatingFilter.GOOD},
-                {SupplierFilter.ENTERPRISE, SupplierFilter.EUROPCAR, SupplierFilter.HERTZ}};
+        return new Object[][]{
+                {CarSizeFilters.CARGO, CarSizeFilters.COMPACT}
+        };
     }
 
-    @Test(dataProvider = "locations-for-car-search")
-    public void searchForCarsInSpecificLocation(String location){
-        conductSearch(location, 5, 16);
+    @Test(dataProvider = "filters-car-size")
+    public void searchForCarsInSpecificLocation(CarSizeFilters[] carSizeFilters){
+        conductSearch("Barcelona", 5, 16);
         searchResultsPage = new SearchResultsPage(driver);
-
+        searchResultsPage.filterByCarSize(new ArrayList<>(Arrays.asList(carSizeFilters)));
     }
 
     private void conductSearch(String location, long daysFromNowForPickUp, long daysFromNowReturnDate){

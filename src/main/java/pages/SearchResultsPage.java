@@ -40,7 +40,7 @@ public class SearchResultsPage extends BrowserActions {
     public void filterByCarSize(ArrayList<CarSizeFilters> filters){
         filters.forEach((x)-> {
             String availableCars = getElementByCssSelector(AVAILABLE_CARS).getText();
-            click(String.format(FILTER_CHECKBOX_OPTION, x.getCarSize()));
+            click(String.format(FILTER_SIZE_OPTION, x.getCarSize()));
             waits.waitUntilTextHasChanged(AVAILABLE_CARS, availableCars);
         });
     }
