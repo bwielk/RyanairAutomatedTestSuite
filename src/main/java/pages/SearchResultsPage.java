@@ -39,41 +39,48 @@ public class SearchResultsPage extends BrowserActions {
 
     public void filterByCarSize(ArrayList<CarSizeFilters> filters){
         filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS).getText();
-            click(String.format(FILTER_SIZE_OPTION, x.getCarSize()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS, availableCars);
+            if(!checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING)){
+                click(String.format(FILTER_SIZE_OPTION, x.getCarSize()));
+                assert checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING);
+            }else{
+                String availableCarsBeforeFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
+                click(String.format(FILTER_SIZE_OPTION, x.getCarSize()));
+                waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCarsBeforeFilter);
+                String availableCarsAfterFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
+                assert !availableCarsBeforeFilter.equals(availableCarsAfterFilter);
+            }
         });
     }
 
     public void filterByMileage(ArrayList<MileageFilters> filters){
         filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS).getText();
+            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
             click(String.format(FILTER_MILEAGE_OPTION, x.getType()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS, availableCars);
+            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
         });
     }
 
     public void filterByRating(ArrayList<RatingFilter> filters){
         filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS).getText();
+            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
             click(String.format(FILTER_RATING_OPTION, x.getType()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS, availableCars);
+            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
         });
     }
 
     public void filterBySupplier(ArrayList<SupplierFilter> filters){
         filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS).getText();
+            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
             click(String.format(FILTER_SUPPLIER_OPTION, x.getName()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS, availableCars);
+            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
         });
     }
 
     public void filterByFuelPolicy(ArrayList<FuelPolicyFilter> filters){
         filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS).getText();
+            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
             click(String.format(FILTER_SUPPLIER_OPTION, x.getType()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS, availableCars);
+            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
         });
     }
 }

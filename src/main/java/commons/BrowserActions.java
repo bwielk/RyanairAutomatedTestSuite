@@ -65,7 +65,7 @@ public class BrowserActions {
             if(element != null){
                 result = true;
             }
-        }catch(NoSuchElementException e){
+        }catch(Exception e){
             logger.error(e.toString());
         }
         return result;

@@ -1,6 +1,7 @@
 package waits;
 
 import commons.BrowserActions;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -26,16 +27,12 @@ public class Waits {
     }
 
     public void waitUntilTextHasChanged(String locator, String initialText){
-        this.wait.until(waitUntilTextChanged(locator, initialText));
-    }
-
-    private ExpectedCondition<Boolean> waitUntilTextChanged(String elementLocator, String primaryText){
-        new ExpectedCondition<Boolean>() {
+        this.wait.until(new ExpectedCondition<Boolean>() {
+            @NullableDecl
             @Override
-            public Boolean apply(WebDriver input){
-                return !new BrowserActions(driver).getElementByCssSelector(elementLocator).getText().equals(primaryText);
+            public Boolean apply(@NullableDecl WebDriver driver) {
+                return !new BrowserActions(driver).getElementByCssSelector(locator).getText().equals(initialText);
             }
-        };
-        return null;
+        });
     }
 }
