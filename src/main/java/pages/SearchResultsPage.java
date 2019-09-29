@@ -55,20 +55,36 @@ public class SearchResultsPage extends BrowserActions {
         });
     }
 
-    public void checkFilteringByCarSizeResults(String expectedResult){
+    public void checkFilteringByCarSizeResults(String[] expectedResult){
+        /**
+         * Scrolling down until we've got all results visible
+         */
         List<String> results = new ArrayList<>();
-        List<String> paramValues = getAttributeValues(CAR_ITEM_PANEL, "ct-vehicle-block-replace");
         int numberOfAvailableCars = Integer.valueOf(getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText());
         int numOfVisibleCarsAfterScroll = 0;
         while(numOfVisibleCarsAfterScroll != numberOfAvailableCars){
             scrollPageDown();
             numOfVisibleCarsAfterScroll = getElementsByCssSelector(CAR_ITEM_PANEL).size();
         }
+        /**
+         * Get sought for attributes
+         */
+        List<String> paramValues = getAttributeValues(CAR_ITEM_PANEL, "ct-vehicle-block-replace");
         paramValues.forEach((x)-> {
             results.add(getElementByCssSelector(String.format(CAR_ITEM_PRECISE_SELECTOR, x) + " " + CAR_TYPE_RESULT).getText());
         });
-        Set<String> set = new HashSet<>(results);
-        assert set.size() == 1 && new ArrayList<>(set).get(0).toLowerCase().equals(expectedResult.toLowerCase());
+        /**
+         * Check the values
+         */
+        int numberOfMatchingParams = 0;
+        for(String param : expectedResult){
+            for(String result : results){
+                if(result.toLowerCase().equals(param.toLowerCase())){
+                    numberOfMatchingParams++;
+                }
+            }
+        }
+        assert numberOfAvailableCars == numberOfMatchingParams;
     }
 
     public void filterByMileage(ArrayList<MileageFilters> filters){

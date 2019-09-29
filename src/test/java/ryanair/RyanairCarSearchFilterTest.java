@@ -18,21 +18,22 @@ public class RyanairCarSearchFilterTest extends BaseTestClass {
 
     @DataProvider(name = "filters-car-size")
     Object[][] filters() {
-        CarSizeFilters[] filters = {CarSizeFilters.COMPACT};
+        CarSizeFilters[] filters = {CarSizeFilters.COMPACT, CarSizeFilters.ECONOMY};
+        String[] filteringResults = {"compact", "economy"};
         return new Object[][]{
-                {filters, "compact"}
+                {filters, filteringResults}
         };
     }
 
     @Test(dataProvider = "filters-car-size")
-    public void searchForCarsInSpecificLocation(CarSizeFilters[] carSizeFilters, String expectedResults){
-        conductSearch("Barcelona", 5, 16);
+    public void searchForCarsOfSpecificSize(CarSizeFilters[] carSizeFilters, String[] expectedResults){
+        conductBasicSearch("Barcelona", 5, 16);
         searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.filterByCarSize(new ArrayList<>(Arrays.asList(carSizeFilters)));
         searchResultsPage.checkFilteringByCarSizeResults(expectedResults);
     }
 
-    private void conductSearch(String location, long daysFromNowForPickUp, long daysFromNowReturnDate){
+    private void conductBasicSearch(String location, long daysFromNowForPickUp, long daysFromNowReturnDate){
         homePage = new HomePage(driver);
         if(daysFromNowForPickUp >= daysFromNowReturnDate){
             throw new IllegalArgumentException("Number of future days for pick up date must be less than the " +
