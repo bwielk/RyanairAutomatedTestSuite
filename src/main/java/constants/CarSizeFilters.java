@@ -3,6 +3,7 @@ package constants;
 public enum CarSizeFilters {
 
     COMPACT("compact"),
+    ECONOMY("economy"),
     STANDARD("standard"),
     CARGO("cargovan"),
     CONVERTIBLE("convertible");

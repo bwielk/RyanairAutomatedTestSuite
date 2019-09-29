@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import waits.Waits;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static locators.SearchResultsLocators.*;
 
@@ -50,6 +53,22 @@ public class SearchResultsPage extends BrowserActions {
                 assert !availableCarsBeforeFilter.equals(availableCarsAfterFilter);
             }
         });
+    }
+
+    public void checkFilteringByCarSizeResults(String expectedResult){
+        List<String> results = new ArrayList<>();
+        List<String> paramValues = getAttributeValues(CAR_ITEM_PANEL, "ct-vehicle-block-replace");
+        int numberOfAvailableCars = Integer.valueOf(getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText());
+        int numOfVisibleCarsAfterScroll = 0;
+        while(numOfVisibleCarsAfterScroll != numberOfAvailableCars){
+            scrollPageDown();
+            numOfVisibleCarsAfterScroll = getElementsByCssSelector(CAR_ITEM_PANEL).size();
+        }
+        paramValues.forEach((x)-> {
+            results.add(getElementByCssSelector(String.format(CAR_ITEM_PRECISE_SELECTOR, x) + " " + CAR_TYPE_RESULT).getText());
+        });
+        Set<String> set = new HashSet<>(results);
+        assert set.size() == 1 && new ArrayList<>(set).get(0).toLowerCase().equals(expectedResult.toLowerCase());
     }
 
     public void filterByMileage(ArrayList<MileageFilters> filters){

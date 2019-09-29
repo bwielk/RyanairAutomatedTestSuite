@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class BrowserActions {
@@ -81,5 +83,17 @@ public class BrowserActions {
 
     public WebElement getElementByCssSelector(String elementLocator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementLocator)));
+    }
+
+    public List<String> getAttributeValues(String cssSelector, String attribute) {
+        List<String> attributes = new ArrayList<>();
+        List<WebElement> elements = getElementsByCssSelector(cssSelector);
+        elements.forEach(x -> attributes.add(x.getAttribute(attribute)));
+        return attributes;
+    }
+
+    public void scrollPageDown(){
+        JavascriptExecutor jse = ((JavascriptExecutor) driver);
+        jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 }

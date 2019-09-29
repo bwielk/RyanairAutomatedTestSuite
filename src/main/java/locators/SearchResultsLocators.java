@@ -36,4 +36,11 @@ public class SearchResultsLocators {
     public static final String FILTER_MILEAGE_OPTION = "[id='input-mileage-%s']";
     public static final String FILTER_RATING_OPTION = "[id='input-hireCompanyRating-%s']";
     public static final String FILTER_SUPPLIER_OPTION = "[id='input-supplier-%s']";
+
+    //RESULTS
+    public static final String CAR_ITEM_PANEL = "[class='ct-car-list-item__wrap']";
+    public static final String CAR_ITEM_PRECISE_SELECTOR = "[ct-vehicle-block-replace='%s']";
+    public static final String CAR_TYPE_RESULT = "ct-vehicle-block-group[class=\"ct-block\"]";
+    public static final String SHOW_MORE_RESULTS = "[class=\"ct-loading-show-more-container\"] button";
+//    public static final String CAR_SIZE_INFO = CAR_ITEM_PANEL + ;
 }

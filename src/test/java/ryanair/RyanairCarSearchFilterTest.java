@@ -18,16 +18,18 @@ public class RyanairCarSearchFilterTest extends BaseTestClass {
 
     @DataProvider(name = "filters-car-size")
     Object[][] filters() {
+        CarSizeFilters[] filters = {CarSizeFilters.COMPACT};
         return new Object[][]{
-                {CarSizeFilters.CARGO, CarSizeFilters.COMPACT}
+                {filters, "compact"}
         };
     }
 
     @Test(dataProvider = "filters-car-size")
-    public void searchForCarsInSpecificLocation(CarSizeFilters[] carSizeFilters){
+    public void searchForCarsInSpecificLocation(CarSizeFilters[] carSizeFilters, String expectedResults){
         conductSearch("Barcelona", 5, 16);
         searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.filterByCarSize(new ArrayList<>(Arrays.asList(carSizeFilters)));
+        searchResultsPage.checkFilteringByCarSizeResults(expectedResults);
     }
 
     private void conductSearch(String location, long daysFromNowForPickUp, long daysFromNowReturnDate){
