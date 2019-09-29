@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import waits.Waits;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static locators.SearchResultsLocators.*;
 
@@ -41,13 +39,14 @@ public class SearchResultsPage extends BrowserActions {
     }
 
     public void filterByCarSize(ArrayList<CarSizeFilters> filters){
+        String option = FILTER_SIZE_OPTION;
         filters.forEach((x)-> {
             if(!checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING)){
-                click(String.format(FILTER_SIZE_OPTION, x.getCarSize()));
+                click(String.format(option, x.getCarSize()));
                 assert checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING);
             }else{
                 String availableCarsBeforeFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
-                click(String.format(FILTER_SIZE_OPTION, x.getCarSize()));
+                click(String.format(option, x.getCarSize()));
                 waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCarsBeforeFilter);
                 String availableCarsAfterFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
                 assert !availableCarsBeforeFilter.equals(availableCarsAfterFilter);
@@ -56,26 +55,10 @@ public class SearchResultsPage extends BrowserActions {
     }
 
     public void checkFilteringByCarSizeResults(String[] expectedResult){
-        /**
-         * Scrolling down until we've got all results visible
-         */
-        List<String> results = new ArrayList<>();
+
         int numberOfAvailableCars = Integer.valueOf(getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText());
-        int numOfVisibleCarsAfterScroll = 0;
-        while(numOfVisibleCarsAfterScroll != numberOfAvailableCars){
-            scrollPageDown();
-            numOfVisibleCarsAfterScroll = getElementsByCssSelector(CAR_ITEM_PANEL).size();
-        }
-        /**
-         * Get sought for attributes
-         */
-        List<String> paramValues = getAttributeValues(CAR_ITEM_PANEL, "ct-vehicle-block-replace");
-        paramValues.forEach((x)-> {
-            results.add(getElementByCssSelector(String.format(CAR_ITEM_PRECISE_SELECTOR, x) + " " + CAR_TYPE_RESULT).getText());
-        });
-        /**
-         * Check the values
-         */
+        scrollDownThePageUntilAllResultsAreShown(numberOfAvailableCars);
+        List<String> results = getInfoFromAllDisplayedCars(CAR_TYPE_RESULT);
         int numberOfMatchingParams = 0;
         for(String param : expectedResult){
             for(String result : results){
@@ -87,35 +70,86 @@ public class SearchResultsPage extends BrowserActions {
         assert numberOfAvailableCars == numberOfMatchingParams;
     }
 
-    public void filterByMileage(ArrayList<MileageFilters> filters){
-        filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
-            click(String.format(FILTER_MILEAGE_OPTION, x.getType()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
-        });
-    }
-
-    public void filterByRating(ArrayList<RatingFilter> filters){
-        filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
-            click(String.format(FILTER_RATING_OPTION, x.getType()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
-        });
-    }
-
     public void filterBySupplier(ArrayList<SupplierFilter> filters){
+        String option = FILTER_SUPPLIER_OPTION;
         filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
-            click(String.format(FILTER_SUPPLIER_OPTION, x.getName()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
+            if(!checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING)){
+                click(String.format(option, x.getName()));
+                assert checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING);
+            }else{
+                String availableCarsBeforeFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
+                click(String.format(option, x.getName()));
+                waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCarsBeforeFilter);
+                String availableCarsAfterFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
+                assert !availableCarsBeforeFilter.equals(availableCarsAfterFilter);
+            }
         });
     }
 
-    public void filterByFuelPolicy(ArrayList<FuelPolicyFilter> filters){
-        filters.forEach((x)-> {
-            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
-            click(String.format(FILTER_SUPPLIER_OPTION, x.getType()));
-            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
+    public void checkFilteringBySuppliersResults(String[] expectedResults){
+        int numberOfAvailableCars = Integer.valueOf(getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText());
+        scrollDownThePageUntilAllResultsAreShown(numberOfAvailableCars);
+        List<String> results = getAttributeValues(CAR_SUPPLIER_RESULT, "alt");
+        System.out.println(results);
+        int numberOfMatchingParams = 0;
+        for(String param : expectedResults){
+            for(String result : results){
+                if(result.toLowerCase().equals(param.toLowerCase())){
+                    numberOfMatchingParams++;
+                }
+            }
+        }
+        assert numberOfAvailableCars == numberOfMatchingParams;
+    }
+
+//    public void filterByFuelPolicy(ArrayList<FuelPolicyFilter> filters){
+//        filters.forEach((x)-> {
+//            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
+//            click(String.format(FILTER_SUPPLIER_OPTION, x.getType()));
+//            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
+//        });
+//    }
+//
+//    public void filterByMileage(ArrayList<MileageFilters> filters){
+//        filters.forEach((x)-> {
+//            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
+//            click(String.format(FILTER_MILEAGE_OPTION, x.getType()));
+//            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
+//        });
+//    }
+//
+//    public void filterByRating(ArrayList<RatingFilter> filters){
+//        filters.forEach((x)-> {
+//            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
+//            click(String.format(FILTER_RATING_OPTION, x.getType()));
+//            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
+//        });
+//    }
+
+    public void scrollDownThePageUntilAllResultsAreShown(int numberOfAvailableCars){
+        int numOfVisibleCarsAfterScroll = 0;
+        while(numOfVisibleCarsAfterScroll != numberOfAvailableCars){
+            scrollPageDown();
+            numOfVisibleCarsAfterScroll = getElementsByCssSelector(CAR_ITEM_PANEL).size();
+        }
+    }
+
+    /**
+     * Extracts content about a car (e.g. category, type etc.) from all cars displayed in the results.
+     * All the data is aggregated in a list
+     * @param informationCssSelector - css selector of a detail displayed in car item in the the results list
+     * @return a list of Strings representing the displayed values
+     */
+    public List<String> getInfoFromAllDisplayedCars(String informationCssSelector){
+        List<String> results = new ArrayList<>();
+        /**
+         * Here (line 76) we need to get all the car ids from the ct-vehicle-block-replace attribute. It makes
+         * searching for car data easier css locator-wise
+         */
+        List<String> paramValues = getAttributeValues(CAR_ITEM_PANEL, "ct-vehicle-block-replace");
+        paramValues.forEach((x)-> {
+            results.add(getElementByCssSelector(String.format(CAR_ITEM_PRECISE_SELECTOR, x) + " " + informationCssSelector).getText());
         });
+        return results;
     }
 }

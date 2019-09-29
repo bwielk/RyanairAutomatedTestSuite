@@ -3,6 +3,7 @@ package constants;
 public enum SupplierFilter {
 
     ENTERPRISE("enterprise"),
+    DOLLAR("dollar"),
     HERTZ("hertz"),
     EUROPCAR("europcar");
 

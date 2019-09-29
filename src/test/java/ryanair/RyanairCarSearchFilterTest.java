@@ -18,10 +18,25 @@ public class RyanairCarSearchFilterTest extends BaseTestClass {
 
     @DataProvider(name = "filters-car-size")
     Object[][] filters() {
-        CarSizeFilters[] filters = {CarSizeFilters.COMPACT, CarSizeFilters.ECONOMY};
-        String[] filteringResults = {"compact", "economy"};
+        CarSizeFilters[] filters1 = {CarSizeFilters.COMPACT, CarSizeFilters.ECONOMY};
+        CarSizeFilters[] filters2 = {CarSizeFilters.STANDARD};
+        String[] filteringResults1 = {"compact", "economy"};
+        String[] filteringResults2 = {"standard"};
         return new Object[][]{
-                {filters, filteringResults}
+                {filters1, filteringResults1},
+                {filters2, filteringResults2}
+        };
+    }
+
+    @DataProvider(name = "filters-supplier")
+    Object[][] pickup() {
+        SupplierFilter[] filter1 = {SupplierFilter.HERTZ, SupplierFilter.EUROPCAR};
+        SupplierFilter[] filter2 = {SupplierFilter.EUROPCAR, SupplierFilter.HERTZ, SupplierFilter.DOLLAR};
+        String[] filteringResults1 = {"hertz", "europcar"};
+        String[] filteringResults2 = {"europcar", "hertz", "dollar"};
+        return new Object[][]{
+                {filter1, filteringResults1},
+                {filter2, filteringResults2}
         };
     }
 
@@ -31,6 +46,14 @@ public class RyanairCarSearchFilterTest extends BaseTestClass {
         searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.filterByCarSize(new ArrayList<>(Arrays.asList(carSizeFilters)));
         searchResultsPage.checkFilteringByCarSizeResults(expectedResults);
+    }
+
+    @Test(dataProvider = "filters-supplier")
+    public void searchForCarsOfSpecificSuppliers(SupplierFilter[] suppliers, String[] expectedResults){
+        conductBasicSearch("New York", 10, 29);
+        searchResultsPage = new SearchResultsPage(driver);
+        searchResultsPage.filterBySupplier(new ArrayList<>(Arrays.asList(suppliers)));
+        searchResultsPage.checkFilteringBySuppliersResults(expectedResults);
     }
 
     private void conductBasicSearch(String location, long daysFromNowForPickUp, long daysFromNowReturnDate){

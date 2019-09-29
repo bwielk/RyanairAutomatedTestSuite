@@ -35,12 +35,13 @@ public class SearchResultsLocators {
     public static final String FILTER_FUEL_OPTION = "[id='input-fuelPolicy-%s']";
     public static final String FILTER_MILEAGE_OPTION = "[id='input-mileage-%s']";
     public static final String FILTER_RATING_OPTION = "[id='input-hireCompanyRating-%s']";
-    public static final String FILTER_SUPPLIER_OPTION = "[id='input-supplier-%s']";
+    public static final String FILTER_SUPPLIER_OPTION = "label[for='supplier-%s']";
 
     //RESULTS
     public static final String CAR_ITEM_PANEL = "[class='ct-car-list-item__wrap']";
     public static final String CAR_ITEM_PRECISE_SELECTOR = "[ct-vehicle-block-replace='%s']";
     public static final String CAR_TYPE_RESULT = "ct-vehicle-block-group[class=\"ct-block\"]";
     public static final String SHOW_MORE_RESULTS = "[class=\"ct-loading-show-more-container\"] button";
+    public static final String CAR_SUPPLIER_RESULT = CAR_ITEM_PANEL + " img[class=\"ct-supplier-image-size__undefined\"]";
 //    public static final String CAR_SIZE_INFO = CAR_ITEM_PANEL + ;
 }
