@@ -40,6 +40,14 @@ public class RyanairCarSearchFilterTest extends BaseTestClass {
         };
     }
 
+    @DataProvider(name = "ratings")
+    Object[][] ratings() {
+        RatingFilter[] ratings1 = {RatingFilter.AVERAGE, RatingFilter.GOOD};
+        return new Object[][]{
+                {ratings1}
+        };
+    }
+
     @Test(dataProvider = "filters-car-size")
     public void searchForCarsOfSpecificSize(CarSizeFilters[] carSizeFilters, String[] expectedResults){
         conductBasicSearch("Barcelona", 5, 16);
@@ -54,6 +62,14 @@ public class RyanairCarSearchFilterTest extends BaseTestClass {
         searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.filterBySupplier(new ArrayList<>(Arrays.asList(suppliers)));
         searchResultsPage.checkFilteringBySuppliersResults(expectedResults);
+    }
+
+    @Test(dataProvider = "ratings")
+    public void searchForCarsOfRating(RatingFilter[] ratings){
+        conductBasicSearch("Paris", 4, 19);
+        searchResultsPage = new SearchResultsPage(driver);
+        searchResultsPage.filterByRating(new ArrayList<>(Arrays.asList(ratings)));
+        searchResultsPage.checkFilteringByRatingResults(ratings);
     }
 
     private void conductBasicSearch(String location, long daysFromNowForPickUp, long daysFromNowReturnDate){

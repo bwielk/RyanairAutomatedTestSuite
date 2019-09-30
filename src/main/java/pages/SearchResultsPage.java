@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import waits.Waits;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static locators.SearchResultsLocators.*;
 
@@ -90,7 +92,6 @@ public class SearchResultsPage extends BrowserActions {
         int numberOfAvailableCars = Integer.valueOf(getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText());
         scrollDownThePageUntilAllResultsAreShown(numberOfAvailableCars);
         List<String> results = getAttributeValues(CAR_SUPPLIER_RESULT, "alt");
-        System.out.println(results);
         int numberOfMatchingParams = 0;
         for(String param : expectedResults){
             for(String result : results){
@@ -102,6 +103,46 @@ public class SearchResultsPage extends BrowserActions {
         assert numberOfAvailableCars == numberOfMatchingParams;
     }
 
+    public void filterByRating(ArrayList<RatingFilter> filters){
+        String option = FILTER_RATING_OPTION;
+        filters.forEach((x)-> {
+            if(!checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING)){
+                click(String.format(option, x.getType()));
+                assert checkElementIsDisplayed(AVAILABLE_CARS_AFTER_FILTERING);
+            }else{
+                String availableCarsBeforeFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
+                click(String.format(option, x.getType()));
+                waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCarsBeforeFilter);
+                String availableCarsAfterFilter = getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText();
+                assert !availableCarsBeforeFilter.equals(availableCarsAfterFilter);
+            }
+        });
+    }
+
+    public void checkFilteringByRatingResults(RatingFilter[] expectedResults){
+        int numberOfAvailableCars = Integer.valueOf(getElementByCssSelector(AVAILABLE_CARS_AFTER_FILTERING).getText());
+        scrollDownThePageUntilAllResultsAreShown(numberOfAvailableCars);
+        List<String> ratingScoresDescription = getInfoFromAllDisplayedCars(CAR_RATING_RESULT_DESCRIPTION);
+        List<String> ratingScoresAsNumbers = getInfoFromAllDisplayedCars(CAR_RATING_RESULT);
+        assert ratingScoresAsNumbers.size() == ratingScoresDescription.size();
+        Map<String, List<Double>> results = new HashMap<>();
+        for(int i=0; i<ratingScoresAsNumbers.size(); i++){
+            String key = ratingScoresDescription.get(i).toLowerCase();
+            if(results.keySet().contains(key)){
+                results.get(key).add(Double.valueOf(ratingScoresAsNumbers.get(i)));
+            }else{
+                List<Double> values = new ArrayList<>();
+                values.add(Double.valueOf(ratingScoresAsNumbers.get(i)));
+                results.put(ratingScoresDescription.get(i).toLowerCase(), values);
+            }
+        }
+        for(RatingFilter filter: expectedResults){
+            List<Double> r = results.get(filter.getDescription().toLowerCase());
+            assert r.stream().allMatch(x -> x >= filter.getMinimum() && x <= filter.getMaximum());
+        }
+    }
+
+
 //    public void filterByFuelPolicy(ArrayList<FuelPolicyFilter> filters){
 //        filters.forEach((x)-> {
 //            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
@@ -109,7 +150,7 @@ public class SearchResultsPage extends BrowserActions {
 //            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
 //        });
 //    }
-//
+
 //    public void filterByMileage(ArrayList<MileageFilters> filters){
 //        filters.forEach((x)-> {
 //            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
@@ -118,13 +159,6 @@ public class SearchResultsPage extends BrowserActions {
 //        });
 //    }
 //
-//    public void filterByRating(ArrayList<RatingFilter> filters){
-//        filters.forEach((x)-> {
-//            String availableCars = getElementByCssSelector(AVAILABLE_CARS_BEFORE_FILTERING).getText();
-//            click(String.format(FILTER_RATING_OPTION, x.getType()));
-//            waits.waitUntilTextHasChanged(AVAILABLE_CARS_BEFORE_FILTERING, availableCars);
-//        });
-//    }
 
     public void scrollDownThePageUntilAllResultsAreShown(int numberOfAvailableCars){
         int numOfVisibleCarsAfterScroll = 0;

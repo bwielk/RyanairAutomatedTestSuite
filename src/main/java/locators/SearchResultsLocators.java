@@ -34,7 +34,7 @@ public class SearchResultsLocators {
     public static final String FILTER_SIZE_OPTION = "label[for='size-%s']";
     public static final String FILTER_FUEL_OPTION = "[id='input-fuelPolicy-%s']";
     public static final String FILTER_MILEAGE_OPTION = "[id='input-mileage-%s']";
-    public static final String FILTER_RATING_OPTION = "[id='input-hireCompanyRating-%s']";
+    public static final String FILTER_RATING_OPTION = "label[for='hireCompanyRating-%s']";
     public static final String FILTER_SUPPLIER_OPTION = "label[for='supplier-%s']";
 
     //RESULTS
@@ -43,5 +43,8 @@ public class SearchResultsLocators {
     public static final String CAR_TYPE_RESULT = "ct-vehicle-block-group[class=\"ct-block\"]";
     public static final String SHOW_MORE_RESULTS = "[class=\"ct-loading-show-more-container\"] button";
     public static final String CAR_SUPPLIER_RESULT = CAR_ITEM_PANEL + " img[class=\"ct-supplier-image-size__undefined\"]";
+    public static final String CAR_RATING_RESULT = "[ng-bind=\":: $ctrl.customerReviewsScoresOverall\"]";
+    public static final String CAR_RATING_RESULT_DESCRIPTION = "[class=\"ct-customer-rating-description\"]";
+
 //    public static final String CAR_SIZE_INFO = CAR_ITEM_PANEL + ;
 }

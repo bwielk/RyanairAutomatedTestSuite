@@ -4,6 +4,7 @@
     <test name="Ryanair tests">
         <classes>
             <class name="ryanair.RyanairCarSearchTest"/>
+            <class name="ryanair.RyanairCarSearchFilterTest"/>
         </classes>
     </test>
 </suite>
